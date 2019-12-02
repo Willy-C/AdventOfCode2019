@@ -1,8 +1,7 @@
 import operator
 
 with open('input.txt', 'r') as f:
-    data_list = f.readline().strip().split(',')
-    data = [int(x) for x in data_list]
+    data = [int(x) for x in f.readline().strip().split(',')]
 
 
 operations = {
@@ -11,7 +10,7 @@ operations = {
 }
 
 
-def process_data(data: list) -> list:
+def process_data(data: list) -> int:
     for i in range(0, len(data), 4):
         opcode = data[i]
         if opcode in operations:
@@ -28,12 +27,12 @@ print(f'Part 1: {process_data(data.copy())}')
 
 
 def find_pair():
-    for i in range(100):
-        for j in range(100):
+    for noun in range(100):
+        for verb in range(100):
             copy = data.copy()
-            copy[1], copy[2] = i, j
+            copy[1], copy[2] = noun, verb
             if process_data(copy) == 19690720:
-                return i, j
+                return noun, verb
 
-
-print(f'Part 2: {find_pair()}')
+noun, verb = find_pair()
+print(f'Part 2: {noun*100 + verb}')
