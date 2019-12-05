@@ -25,7 +25,7 @@ intersects = set(coords1).intersection(coords2)
 
 # Shortest Manhattan distance from central point
 closest_intersection = (min([abs(x) + abs(y) for x, y in intersects]))
-print(closest_intersection)
+print(f'Part 1: {closest_intersection}')
 
 
 # Part 2
@@ -42,4 +42,4 @@ def find_distance_to_intersect():
 
 
 # Fewest combined step to intersection
-print(find_distance_to_intersect())
+print(f'Part 2: {find_distance_to_intersect()}')
