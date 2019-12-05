@@ -8,37 +8,7 @@ operations = {
     2: operator.mul
 }
 
-
-def process_data(data: list):
-    i = 0
-    while i < len(data):
-        instruction = str(data[i]).zfill(5)
-        opcode = int(instruction[-2:])
-        if opcode in operations:
-            param1 = data[data[i + 1]] if instruction[-3] == '0' else data[i + 1]
-            param2 = data[data[i + 2]] if instruction[-4] == '0' else data[i + 2]
-            data[data[i + 3]] = operations[opcode](param1, param2)
-            i += 4
-        elif opcode == 3:
-            data[data[i + 1]] = int(input("Opcode 3 - Please enter input: "))
-            i += 2
-        elif opcode == 4:
-            print(f'Opcode 4: {data[data[i + 1]] if instruction[-3] == "0" else data[i + 1]}')
-            i += 2
-        elif opcode == 99:
-            print(99)
-            break
-        else:
-            print(f'Unknown Opcode: {opcode}')
-            break
-
-
-print('Part 1:')
-process_data(data.copy())
-print(f'{"-" * 20}\nPart 2:')
-
-
-def process_data2(data: list):
+def process_data(data: list, _input):
     i = 0
     while i < len(data):
         instruction = str(data[i]).zfill(5)
@@ -50,7 +20,7 @@ def process_data2(data: list):
             data[data[i + 3]] = operations[opcode](param1, param2)
             i += 4
         elif opcode == 3:
-            data[data[i + 1]] = int(input("Opcode 3 - Please enter input: "))
+            data[data[i + 1]] = _input
             i += 2
         elif opcode == 4:
             print(f'Opcode 4: {data[data[i + 1]] if instruction[-3] == "0" else data[i + 1]}')
@@ -82,11 +52,14 @@ def process_data2(data: list):
                 data[data[i + 3]] = 0
             i += 4
         elif opcode == 99:
-            print(99)
             break
         else:
             print(f'Unknown Opcode: {opcode}')
             break
 
 
-process_data2(data.copy())
+print('Part 1:')
+process_data(data.copy(),1 )
+print(f'{"-" * 20}\nPart 2:')
+process_data(data.copy(), 5)
+
