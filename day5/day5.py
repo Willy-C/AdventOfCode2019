@@ -8,6 +8,7 @@ operations = {
     2: operator.mul
 }
 
+
 def process_data(data: list, _input):
     i = 0
     while i < len(data):
@@ -59,7 +60,6 @@ def process_data(data: list, _input):
 
 
 print('Part 1:')
-process_data(data.copy(),1 )
+process_data(data.copy(), 1)
 print(f'{"-" * 20}\nPart 2:')
 process_data(data.copy(), 5)
-
