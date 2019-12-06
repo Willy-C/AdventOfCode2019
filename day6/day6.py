@@ -39,8 +39,7 @@ def get_path(key):
 
 path1 = get_path('YOU')
 path2 = get_path('SAN')
-
 inter = set(path1).intersection(path2)
 
-path_length = len(path1) + len(path2) - len(inter) * 2
+path_length = len(path1[:-len(inter)]) + len(path2[:-len(inter)])
 print(f'Part 2: {path_length}')
