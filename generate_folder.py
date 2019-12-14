@@ -8,10 +8,11 @@ def make_folder(day: int, files=False):
     """
     current = os.getcwd()
     final = os.path.join(current, f'day{day}')
+    name = final.split('\\')[-1]
     if not os.path.exists(final):
         os.mkdir(final)
+        print(f'Created folder: {name}')
     else:
-        name = final.split('\\')[-1]
         print(f'Folder {name} already exists!')
 
     if files:
@@ -21,9 +22,9 @@ def make_folder(day: int, files=False):
             if os.path.exists(path):
                 print(f'File {file} already exists!')
                 continue
-            f = open(os.path.join(final, file), 'w')
-            f.close()
+            open(os.path.join(final, file), 'w')
             print(f'Created: {file}')
 
 if __name__ == '__main__':
-    make_folder(1, files=True)
+    for i in range(1, 26):
+        make_folder(i, files=True)
